@@ -1,0 +1,44 @@
+# 📄 Resume Forge — AI Powered Resume Builder
+
+Resume Forge is a **fully client-side resume builder** with a clean UI, instant preview rendering, template support, and an integrated AI bio generator.  
+It is lightweight, fast, and works 100% offline.
+
+✨ **Live Editing**  
+🎨 **12+ Resume Templates**  
+🤖 **AI Summary Writer**  
+🖼 **Image Upload (Profile Photo)**  
+💾 **Auto Save (localStorage)**  
+📄 **PDF / PNG Export**  
+🌙 **Dark Mode**  
+🎛 **Sidebar Controls**  
+📐 **Zoom + A4 / Letter View Modes**
+
+---
+
+## 🚀 Features
+
+### 🔹 1. Multiple Resume Templates
+Choose from Modern, Classic, Creative, Minimal, Elegant, Glassmorphism, Cyberpunk, Soft-UI, Portfolio, ATS-Friendly, Split, Timeline, and more.
+
+### 🔹 2. Real-Time Preview Renderer
+Your resume updates instantly as you type.  
+The preview supports scaling, theme switching, and different page sizes.
+
+### 🔹 3. AI Bio Generator
+Enter your skills → Click "Generate Bio" → Instantly get a polished summary.
+
+### 🔹 4. Auto Save
+Every change is stored in **localStorage**, so users never lose progress.
+
+### 🔹 5. Photo Upload + Drag & Drop
+Upload your headshot with instant preview.
+
+### 🔹 6. Export Tools
+- Export as **PDF**
+- Export as **PNG**
+- Works fully inside the browser
+
+---
+
+## 📁 Project Structure
+
