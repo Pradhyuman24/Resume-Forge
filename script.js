@@ -303,3 +303,31 @@ function ensureEntriesOnStart(){
 
 // Expose for debugging
 window.ResumeForge = { render, gatherState, loadSaved };
+// Wait for DOM to be ready before running anything
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // ---------------- Utilities ----------------
+    const $ = sel => document.querySelector(sel);
+    // ... rest of your utilities ...
+
+    // ---------------- State ----------------
+    const state = {
+      profileImage: '',
+      autoSave: true,
+      zoom: 1,
+      template: 'modern'
+    };
+
+    // ---------------- Elements ----------------
+    const form = $('#resumeForm');
+    const resumePreview = $('#resumePreview');
+    // ... rest of your const definitions ...
+
+    // ... ALL YOUR EVENT LISTENERS HERE ...
+    
+    // ... ALL YOUR FUNCTIONS HERE ...
+
+    // Start the app
+    init();
+});
+
