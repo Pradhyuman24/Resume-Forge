@@ -5,11 +5,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Resume Forge | AI Builder — Separated</title>
 
-  <!-- Fonts & icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Project styles -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -28,67 +26,84 @@
           <h4><i class="fas fa-palette"></i> Template & Style</h4>
           <div class="input">
             <label for="templateSelector">Template</label>
-            <select id="templateSelector" name="templateSelector">
-              <option value="modern">Modern</option>
-              <option value="classic">Classic</option>
-              <option value="creative">Creative</option>
-              <option value="minimal">Minimal</option>
-              <option value="elegant">Elegant</option>
+            <select id="templateSelector">
+              <option value="modern">Modern Split</option>
+              <option value="classic">Classic Serif</option>
+              <option value="minimal">Minimal Clean</option>
+              <option value="elegant">Elegant Border</option>
               <option value="timeline">Timeline</option>
               <option value="glass">Glassmorphism</option>
               <option value="cyber">Cyberpunk</option>
-              <option value="softui">Soft-UI</option>
-              <option value="boxed">Boxed Sidebar</option>
-              <option value="ats">ATS Simple</option>
-              <option value="portfolio">Portfolio</option>
-              <option value="split">Split Screen</option>
+              <option value="softui">Neumorphism (Soft UI)</option>
+              <option value="ats">ATS Friendly (Simple)</option>
+              <option value="portfolio">Portfolio/Creative</option>
             </select>
           </div>
           <div class="row">
             <div class="input small">
-              <label for="colorPicker">Primary Color</label>
+              <label for="colorPicker">Accent Color</label>
               <input type="color" id="colorPicker" value="#4f46e5">
             </div>
             <div class="input small">
-              <label for="fontSelector">Font</label>
-              <select id="fontSelector"><option value="Inter">Inter</option><option value="Merriweather">Merriweather</option></select>
+              <label for="fontSelector">Font Family</label>
+              <select id="fontSelector">
+                <option value="Inter">Inter (Sans)</option>
+                <option value="Merriweather">Merriweather (Serif)</option>
+                <option value="Arial">Arial (System)</option>
+                <option value="Georgia">Georgia (System)</option>
+              </select>
             </div>
           </div>
-
-          <div class="row" style="margin-top:8px">
-            <button type="button" class="ghost" id="saveLocal">Auto-Save: On</button>
-            <button type="button" class="ghost" id="clearLocal">Clear saved</button>
+          <div class="input">
+             <label for="spacingRange">Density / Spacing</label>
+             <input type="range" id="spacingRange" min="0" max="3" step="0.5" value="1">
           </div>
+        </section>
+
+        <section class="card">
+           <h4><i class="fas fa-save"></i> Data & Storage</h4>
+           <div class="row" style="margin-bottom:8px">
+            <button type="button" class="ghost small" id="saveLocal">Auto-Save: On</button>
+            <button type="button" class="ghost small" id="clearLocal" style="color:#ef4444">Reset</button>
+           </div>
+           <div class="row">
+             <button type="button" class="ghost small" id="backupData" title="Download JSON"><i class="fas fa-file-export"></i> Backup</button>
+             <button type="button" class="ghost small" id="restoreDataBtn" title="Import JSON"><i class="fas fa-file-import"></i> Restore</button>
+             <input type="file" id="jsonInput" accept=".json" style="display:none">
+           </div>
         </section>
 
         <section class="card">
           <h4><i class="fas fa-user-circle"></i> Personal</h4>
           <div class="row input">
             <div class="input small">
-              <label for="nameField">Full name</label>
+              <label>Full name</label>
               <input id="nameField" placeholder="Your name" autocomplete="name">
             </div>
             <div class="input small">
-              <label for="titleField">Job title</label>
+              <label>Job title</label>
               <input id="titleField" placeholder="Product Designer">
             </div>
           </div>
 
           <div class="row">
-            <div class="input small"><label for="emailField">Email</label><input id="emailField" type="email" placeholder="you@mail.com"></div>
-            <div class="input small"><label for="phoneField">Phone</label><input id="phoneField" placeholder="+91 99999 99999"></div>
+            <div class="input small"><label>Email</label><input id="emailField" type="email" placeholder="you@mail.com"></div>
+            <div class="input small"><label>Phone</label><input id="phoneField" placeholder="+1 123 456 7890"></div>
           </div>
 
-          <div class="input"><label for="linkField">Link / Portfolio</label><input id="linkField" placeholder="https://..."></div>
+          <div class="input"><label>Link / Portfolio</label><input id="linkField" placeholder="linkedin.com/in/..."></div>
 
           <div class="input" style="margin-top:8px">
-            <label>Photo</label>
+            <label>Profile Photo</label>
             <div class="upload">
-              <label class="icon-btn upload-label" id="uploadLabel"><i class="fas fa-cloud-upload-alt"></i> Choose / Drop</label>
+              <label class="icon-btn upload-label" id="uploadLabel">
+                <i class="fas fa-cloud-upload-alt"></i> Upload
+              </label>
               <input id="imageInput" accept="image/*" type="file" style="display:none">
               <div id="avatarPreview" class="avatar-preview">
                 <img id="avatarImg" src="" alt="" style="display:none">
                 <span id="avatarName">No image</span>
+                <button type="button" id="removeImg" class="icon-only" style="display:none">&times;</button>
               </div>
             </div>
           </div>
@@ -96,69 +111,60 @@
 
         <section class="card ai-card">
           <h4><i class="fas fa-sparkles"></i> AI Writer</h4>
-          <div class="input"><label for="skillsInput">Skills (comma separated)</label><input id="skillsInput" placeholder="React, Figma, Node"></div>
+          <div class="input"><label>Skills (comma separated)</label><input id="skillsInput" placeholder="React, Figma, Node, Python"></div>
           <div class="actions">
             <button type="button" id="generateAI" class="ai-btn"><i class="fas fa-magic"></i> Generate Bio</button>
-            <button type="button" id="insertDefault" class="ghost">Insert sample</button>
+            <button type="button" id="insertDefault" class="ghost">Sample Data</button>
           </div>
-          <div class="input" style="margin-top:6px"><label for="summaryField">Summary</label><textarea id="summaryField" rows="4"></textarea></div>
+          <div class="input" style="margin-top:6px"><label>Summary</label><textarea id="summaryField" rows="4"></textarea></div>
         </section>
 
         <section class="card" id="experiencesCard">
           <h4><i class="fas fa-briefcase"></i> Experience</h4>
           <div id="experiences" class="collection"></div>
-          <div style="margin-top:8px"><button type="button" id="addExperience" class="ghost">+ Add Experience</button></div>
+          <div style="margin-top:8px"><button type="button" id="addExperience" class="dashed-btn">+ Add Position</button></div>
         </section>
 
         <section class="card" id="projectsCard">
           <h4><i class="fas fa-rocket"></i> Projects</h4>
           <div id="projects" class="collection"></div>
-          <div style="margin-top:8px"><button type="button" id="addProject" class="ghost">+ Add Project</button></div>
+          <div style="margin-top:8px"><button type="button" id="addProject" class="dashed-btn">+ Add Project</button></div>
         </section>
 
         <section class="card" id="eduCard">
           <h4><i class="fas fa-graduation-cap"></i> Education</h4>
           <div id="educations" class="collection"></div>
-          <div style="margin-top:8px"><button type="button" id="addEducation" class="ghost">+ Add Education</button></div>
+          <div style="margin-top:8px"><button type="button" id="addEducation" class="dashed-btn">+ Add Education</button></div>
         </section>
 
-        <div style="display:flex;gap:8px;margin-bottom:40px">
-          <button type="button" id="downloadPDF" class="primary"><i class="fas fa-download"></i> Save PDF</button>
-          <button type="button" id="exportPNG" class="ghost"><i class="fas fa-image"></i> Export PNG</button>
+        <div class="export-area">
+          <button type="button" id="downloadPDF" class="primary big-btn"><i class="fas fa-file-pdf"></i> Download PDF</button>
+          <button type="button" id="exportPNG" class="ghost big-btn"><i class="fas fa-image"></i> Export PNG</button>
         </div>
+        <div style="height:40px"></div>
       </form>
     </aside>
 
     <main class="preview-wrap">
       <div class="preview-toolbar card">
-        <div>
+        <div class="toolbar-left">
           <span style="font-weight:700">Preview</span>
-          <span id="lastSaved" style="margin-left:12px;color:var(--muted);font-size:13px">(not saved)</span>
+          <span id="lastSaved" class="status-text">(ready)</span>
         </div>
         <div class="scale-controls">
-          <button id="zoomOut" title="Zoom out">-</button>
-          <div id="zoomVal">50%</div>
-          <button id="zoomIn" title="Zoom in">+</button>
-          <select id="viewSelect" style="margin-left:8px"><option value="A4">A4</option><option value="letter">US Letter</option></select>
+          <button id="zoomOut" title="Zoom out"><i class="fas fa-minus"></i></button>
+          <div id="zoomVal">100%</div>
+          <button id="zoomIn" title="Zoom in"><i class="fas fa-plus"></i></button>
         </div>
       </div>
 
-      <div class="preview card">
-        <div id="resumePreview" class="resume modern" role="document" aria-label="Resume preview">
-          <!-- Render happens in script.js -->
-
-        </div>
+      <div class="preview">
+        <div id="resumePreview" class="resume modern" role="document">
+          </div>
       </div>
     </main>
   </div>
 
-  <!-- Project script -->
-  <body>
-  <div class="container">
-     <!-- ... all your content ... -->
-  </div>
-
-  <!-- NEW LOCATION: Right before the closing body tag -->
   <script src="script.js"></script>
 </body>
 </html>
