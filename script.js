@@ -443,16 +443,25 @@ document.addEventListener('DOMContentLoaded', () => {
   $('#collapseBtn').onclick = () => {
     const sb = document.querySelector('.sidebar');
     const btn = $('#collapseBtn i');
-    if (sb.style.width === '0px') {
-      sb.style.width = '400px';
+    const isMobile = window.innerWidth <= 850;
+    
+    // Determine target width based on screen size
+    const targetWidth = isMobile ? '100%' : '400px';
+
+    if (sb.style.width === '0px' || sb.style.display === 'none') {
+      sb.style.width = targetWidth;
       sb.style.padding = '20px';
+      sb.style.display = 'flex'; // Ensure it's visible
       btn.classList.replace('fa-chevron-right', 'fa-chevron-left');
     } else {
       sb.style.width = '0px';
       sb.style.padding = '0px';
+      // distinct timeout to hide it after transition if needed, 
+      // or simply rely on CSS overflow hidden
       btn.classList.replace('fa-chevron-left', 'fa-chevron-right');
     }
   };
+
 
   // Zoom
   const updateZoom = () => {
@@ -465,3 +474,4 @@ document.addEventListener('DOMContentLoaded', () => {
   // Init
   loadState();
 });
+
