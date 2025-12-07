@@ -181,3 +181,52 @@ button { cursor: pointer; font-family: inherit; font-weight: 500; transition: al
   .resume { width: 100% !important; height: auto !important; min-height: auto; box-shadow: none; border: none; transform: none !important; margin: 0; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
   /* Hide background images for ink saving if user desires, but here we force exact print */
 }
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media screen and (max-width: 850px) {
+  /* 1. Change Layout to Vertical */
+  body { height: auto; overflow: auto; }
+  .container { flex-direction: column; height: auto; }
+
+  /* 2. Fix Sidebar (Form Area) */
+  .sidebar {
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 15px;
+    overflow: visible;
+  }
+  
+  /* Hide the toggle button on mobile since we scroll instead */
+  #collapseBtn { display: none; }
+
+  /* 3. Fix Preview Area */
+  .preview-wrap {
+    height: auto;
+    min-height: 100vh; /* Ensure it takes up space */
+  }
+
+  .preview {
+    padding: 20px 10px;
+    justify-content: flex-start;
+    overflow-x: auto; /* Allow horizontal scrolling for the A4 paper */
+    display: block; /* Helps with scrolling behavior */
+  }
+
+  /* 4. Scale the Resume Visual slightly for small screens */
+  .resume {
+    margin: 0 auto;
+    /* Optional: Scale down slightly to fit better, 
+       or keep full size and let user scroll */
+    transform: scale(0.65); 
+    transform-origin: top center;
+    margin-bottom: -300px; /* Counteract the whitespace from scaling */
+  }
+
+  /* 5. Adjust Toolbar */
+  .preview-toolbar {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
